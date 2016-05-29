@@ -61,7 +61,7 @@ inline void ShowStorageMenu()
 }
 
 float fuelCountPerWeek() {
-
+    Auto *at = new Auto("SS", "A95", 4.0);
 }
 
 float fuelCostAllAutosOnEveryDay() {
