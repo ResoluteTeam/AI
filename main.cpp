@@ -75,13 +75,33 @@ void fuelCostAllAutosOnEveryDay() {
     }
 }
 
-float fuelCostPerWeek() {
+float getFuelPrice(std::string _fuelType) {
+    if (_fuelType == "A80") {
+        return 17.49;
+    } if (_fuelType == "A92") {
+        return 20.47;
+    } if (_fuelType == "A95") {
+        return 21.22;
+    } if (_fuelType == "A98") {
+        return 25.95;
+    } else {
+        return 1;
+    }
+}
 
+void fuelCostPerWeek() {
+    float fuelCost = 0;
+    for (int i = 0; i < cars.size(); i++) {
+        fuelCost += getFuelPrice(cars.at(i)->getFuelType()) * 6;
+    }
+
+    std::cout << "Вартiсть всього палива, витраченого за тиждень: " << fuelCost;
 }
 
 std::string autoNumberWithHighestFuel() {
 
 }
+
 
 int main()
 {
@@ -115,8 +135,6 @@ int main()
                 case 2:
                 {
                   fuelCountPerWeek();
-
-
                 };break;
 
                 case 3:
@@ -126,7 +144,7 @@ int main()
 
                 case 4:
                 {
-//                    методи сюды
+                    fuelCostPerWeek();
                 }; break;
 
                 case 5:
