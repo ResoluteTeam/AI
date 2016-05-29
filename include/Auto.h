@@ -1,6 +1,6 @@
 #ifndef AUTO_H
 #define AUTO_H
-#include <stdlib.h>
+#include <string>
 
 class Auto
 {
