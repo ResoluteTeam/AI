@@ -71,7 +71,7 @@ void fuelCostAllAutosOnEveryDay() {
     for (int i = 0; i < cars.size(); i++) {
         fuelCost += cars.at(i)->getFuelCount();
 
-        std::cout << i + 1 << " машин витрачають " << fuelCost << " лiтра(iв) за день";
+        std::cout << i + 1 << " машин(а) витрачають " << fuelCost << " лiтра(iв) за день";
     }
 }
 
@@ -121,11 +121,7 @@ int main()
 
                 case 3:
                 {
-<<<<<<< HEAD
                     fuelCostAllAutosOnEveryDay();
-=======
-//                    методи туды
->>>>>>> origin/master
                 }; break;
 
                 case 4:
