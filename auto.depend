@@ -16,3 +16,17 @@
 
 1464561197 c:\projects\cb\auto\include\test.h
 
+1464562044 source:d:\cb\ai\main.cpp
+	<stdio.h>
+	<windows.h>
+	<clocale>
+	<vector>
+	<iostream>
+	"include/Auto.h"
+
+1464560502 d:\cb\ai\include\auto.h
+	<string>
+
+1464560502 source:d:\cb\ai\src\auto.cpp
+	"Auto.h"
+
