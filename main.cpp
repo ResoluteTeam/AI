@@ -25,8 +25,8 @@
 
 const int Color = system("color F1");
 
-unsigned int arrow = 1; // вибір номер меню на який ставеться позначка
-unsigned int last_arrow = 5; //кількість категорій
+unsigned int arrow = 0; // вибір номер меню на який ставеться позначка
+unsigned int last_arrow = 6; //кількість категорій
 
 const char* arrow_icon = ""; //знак категорії
 const char* free_space = "  "; // відступ в категоріях
@@ -39,6 +39,7 @@ inline void ShowMainMenu()
 {
     system("CLS");
 
+    printf("%s Ввести дані\n",  arrow == 0 ? arrow_icon : free_space);
     printf("%s Авто-iнфо\n",  arrow == 1 ? arrow_icon : free_space);
     printf("%s Витрачено за тиждень кожною машиною\n",  arrow == 2 ? arrow_icon : free_space);
     printf("%s Вартiсть витраченого всiма авто за кожен день\n",  arrow == 3 ? arrow_icon : free_space);
@@ -100,10 +101,16 @@ int main()
 
             switch(arrow)
             {
-                case 1:
-                  {
+                case 0:
+                {
 
-                  }; break;
+
+                }; break;
+
+                case 1:
+                {
+
+                }; break;
 
                 case 2:
                 {
@@ -114,17 +121,21 @@ int main()
 
                 case 3:
                 {
+<<<<<<< HEAD
                     fuelCostAllAutosOnEveryDay();
+=======
+//                    методи туды
+>>>>>>> origin/master
                 }; break;
 
                 case 4:
                 {
-//                    методи сюда
+//                    методи сюды
                 }; break;
 
                 case 5:
                 {
-//                    методи сюда
+//                    методи тыры пыры
                 }; break;
 
             }
