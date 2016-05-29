@@ -49,20 +49,6 @@ inline void ShowMainMenu()
     printf("%s Esc - Вихiд\n",free_space);
 }
 
-
-inline void ShowStorageMenu()
-{
-    system("CLS");
-
-    ShowMainMenu();
-
-    printf("%s Пошук\n",              arrow == 1 ? arrow_icon : free_space);
-    printf("%s Весь товар\n",         arrow == 2 ? arrow_icon : free_space);
-    printf("%s Фільтр\n",             arrow == 3 ? arrow_icon : free_space);
-    printf("\n\n");
-    printf("%s Назад - Back",free_space);
-}
-
 void fuelCountPerWeek() {
     //-----------------TEST
     Auto *car = new Auto("SS", "A95", 4.0);
@@ -72,14 +58,20 @@ void fuelCountPerWeek() {
 
     for (int i = 0; i < cars.size(); i++) {
         float fCount = 0;
-        fCount = cars.at(i)->getFuelCount() * 7;
+        fCount = cars.at(i)->getFuelCount() * 6;
 
-        std::cout << "Номер: " << cars.at(i)->getNumber() << "Кiлькiсть палива, витраченого машиною за тиждень:" << fCount;
+        std::cout << "Номер: " << cars.at(i)->getNumber() << "  Кiлькiсть палива, витраченого машиною за тиждень:" << fCount;
     }
+
 }
 
-float fuelCostAllAutosOnEveryDay() {
+void fuelCostAllAutosOnEveryDay() {
+    float fuelCost = 0;
+    for (int i = 0; i < cars.size(); i++) {
+        fuelCost += cars.at(i)->getFuelCount();
 
+        std::cout << i + 1 << " машин витрачають " << fuelCost << " лiтра(iв) за день";
+    }
 }
 
 float fuelCostPerWeek() {
@@ -117,11 +109,12 @@ int main()
                 {
                   fuelCountPerWeek();
 
+
                 };break;
 
                 case 3:
                 {
-//                    методи сюда
+                    fuelCostAllAutosOnEveryDay();
                 }; break;
 
                 case 4:
