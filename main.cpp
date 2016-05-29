@@ -95,11 +95,21 @@ void fuelCostPerWeek() {
         fuelCost += getFuelPrice(cars.at(i)->getFuelType()) * 6;
     }
 
-    std::cout << "Вартiсть всього палива, витраченого за тиждень: " << fuelCost;
+    std::cout << "Вартiсть палива за тиждень: " << fuelCost;
 }
 
-std::string autoNumberWithHighestFuel() {
-
+void autoNumberWithHighestFuel() {
+    float fuelCost = 0;
+    float temp  = 0;
+    std::string carNumber;
+    for (int i = 0; i < cars.size(); i++) {
+        fuelCost = getFuelPrice(cars.at(i)->getFuelType()) * cars.at(i)->getFuelCount();
+        if (fuelCost > temp) {
+            carNumber = cars.at(i)->getNumber();
+            temp = fuelCost;
+        }
+    }
+    std::cout << "Номер: " << carNumber << "    (" << temp << ")";
 }
 
 
@@ -149,7 +159,7 @@ int main()
 
                 case 5:
                 {
-//                    методи тыры пыры
+                    autoNumberWithHighestFuel();
                 }; break;
 
             }
