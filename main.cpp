@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <windows.h>
 #include <clocale>
+#include <vector>
+#include <iostream>
 #include "include/Auto.h"
 
 #define BackPressed GetAsyncKeyState(VK_BACK)
@@ -31,6 +33,7 @@ const char* free_space = "  "; // відступ в категоріях
 inline void RaiseArrow() { arrow > 1 ? arrow-- : arrow = last_arrow; }
 inline void LowerArrow() { arrow < last_arrow ? arrow++ : arrow = 1; }
 
+std::vector<Auto*> cars;
 
 inline void ShowMainMenu()
 {
@@ -60,8 +63,19 @@ inline void ShowStorageMenu()
     printf("%s Назад - Back",free_space);
 }
 
-float fuelCountPerWeek() {
-    Auto *at = new Auto("SS", "A95", 4.0);
+void fuelCountPerWeek() {
+    //-----------------TEST
+    Auto *car = new Auto("SS", "A95", 4.0);
+    cars.push_back(car);
+    //-----------------TEST
+
+
+    for (int i = 0; i < cars.size(); i++) {
+        float fCount = 0;
+        fCount = cars.at(i)->getFuelCount() * 7;
+
+        std::cout << "Номер: " << cars.at(i)->getNumber() << "Кiлькiсть палива, витраченого машиною за тиждень:" << fCount;
+    }
 }
 
 float fuelCostAllAutosOnEveryDay() {
@@ -101,7 +115,7 @@ int main()
 
                 case 2:
                 {
-                  //  методи сюда
+                  fuelCountPerWeek();
 
                 };break;
 
