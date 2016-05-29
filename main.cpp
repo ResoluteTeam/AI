@@ -26,12 +26,12 @@
 const int Color = system("color F1");
 
 unsigned int arrow = 0; // вибір номер меню на який ставеться позначка
-unsigned int last_arrow = 6; //кількість категорій
+unsigned int last_arrow = 5; //кількість категорій
 
 const char* arrow_icon = ""; //знак категорії
 const char* free_space = "  "; // відступ в категоріях
-inline void RaiseArrow() { arrow > 1 ? arrow-- : arrow = last_arrow; }
-inline void LowerArrow() { arrow < last_arrow ? arrow++ : arrow = 1; }
+inline void RaiseArrow() { arrow > 0 ? arrow-- : arrow = last_arrow; }
+inline void LowerArrow() { arrow < last_arrow ? arrow++ : arrow = 0; }
 
 std::vector<Auto*> cars;
 
@@ -39,7 +39,7 @@ inline void ShowMainMenu()
 {
     system("CLS");
 
-    printf("%s Ввести дані\n",  arrow == 0 ? arrow_icon : free_space);
+    printf("%s Ввести данi\n",  arrow == 0 ? arrow_icon : free_space);
     printf("%s Авто-iнфо\n",  arrow == 1 ? arrow_icon : free_space);
     printf("%s Витрачено за тиждень кожною машиною\n",  arrow == 2 ? arrow_icon : free_space);
     printf("%s Вартiсть витраченого всiма авто за кожен день\n",  arrow == 3 ? arrow_icon : free_space);
