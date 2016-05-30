@@ -122,18 +122,11 @@ void fillTable()
         std::cout << "\nВведiть кiлькiсть пального, яке витрачається за один день:";
         std::cin >> fuelAmt;
 
-        std::cout << "\nДодати ще один автомобiль? (т/н)";
-        //std::cin >> answer;
+        std::cout << "\nДодати ще один автомобiль? (Так - Enter/Нi - Esc)";
         getch();
         Auto *car = new Auto(number, fuelType, fuelAmt);
         cars.push_back(car);
 
-        /*std::cout << answer;
-        if(answer == 'н' || answer == 'y' || answer == 'н')
-        {
-            exit = true;
-            saveToFile();
-        }*/
 
         while (true) {
             if (EscapePressed) {
@@ -222,12 +215,7 @@ void info() {
 int main()
 {
     setlocale(LC_CTYPE, "Russian");
-<<<<<<< HEAD
-    SetConsoleOutputCP(1251);
-=======
-    //SetConsoleOutputCP(1251);
->>>>>>> a61a23a1d92c665eab05e32e2bc55488f6012c60
-    //SetConsoleCP(1251);
+
     fillTable();
 
     ShowMainMenu();
