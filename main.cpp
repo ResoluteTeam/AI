@@ -134,23 +134,62 @@ void fuelCountPerWeek() {
 
     for (int i = 0; i < cars.size(); i++) {
         float fCount = 0;
-        fCount = cars.at(i)->getFuelCount() * 7;
+        std::cout.flush();
+        fCount = cars.at(i)->getFuelCount() * 6;
 
-        std::cout << "Номер: " << cars.at(i)->getNumber() << "Кiлькiсть палива, витраченого машиною за тиждень:" << fCount;
+        std::cout << "\nНомер: " << cars.at(i)->getNumber() << "  Кiлькiсть палива, витраченого машиною за тиждень:" << fCount;
     }
 }
 
-float fuelCostAllAutosOnEveryDay() {
 
+void fuelCostAllAutosOnEveryDay() {
+    float fuelCost = 0;
+    std::cout.flush();
+    for (int i = 0; i < cars.size(); i++) {
+        fuelCost += cars.at(i)->getFuelCount();
+    }
+    std::cout << "\n" << cars.size() + 1 << " машин(а/и) витрачають " << fuelCost << " лiтра(iв) палива кожного дня";
 }
 
-float fuelCostPerWeek() {
-
+float getFuelPrice(std::string _fuelType) {
+    if (_fuelType == "A80" || _fuelType == "А80") {
+        return 17.49;
+    } if (_fuelType == "A92" || _fuelType == "А92") {
+        return 20.47;
+    } if (_fuelType == "A95" || _fuelType == "А95") {
+        return 21.22;
+    } if (_fuelType == "A98" || _fuelType == "А98") {
+        return 25.95;
+    } else {
+        return 1;
+    }
 }
 
-std::string autoNumberWithHighestFuel() {
+void fuelCostPerWeek() {
+    float fuelCost = 0;
+    std::cout.flush();
+    for (int i = 0; i < cars.size(); i++) {
+        fuelCost += getFuelPrice(cars.at(i)->getFuelType()) * 6;
+    }
 
+    std::cout << "Вартiсть палива за тиждень: " << fuelCost;
 }
+
+void autoNumberWithHighestFuel() {
+    float fuelCost = 0;
+    float temp  = 0;
+    std::string carNumber;
+    for (int i = 0; i < cars.size(); i++) {
+        fuelCost = getFuelPrice(cars.at(i)->getFuelType()) * cars.at(i)->getFuelCount();
+        if (fuelCost > temp) {
+            carNumber = cars.at(i)->getNumber();
+            temp = fuelCost;
+        }
+    }
+    std::cout.flush();
+    std::cout << "Номер: " << carNumber << "    (" << temp << ")";
+}
+
 
 int main()
 {
@@ -183,22 +222,29 @@ int main()
                 case 2:
                 {
                   fuelCountPerWeek();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6bedbe96b531029a24f908e17f9a79f57e15bcb6
                 };break;
 
                 case 3:
                 {
+<<<<<<< HEAD
 //                    методи туды
+=======
+                    fuelCostAllAutosOnEveryDay();
+>>>>>>> 6bedbe96b531029a24f908e17f9a79f57e15bcb6
                 }; break;
 
                 case 4:
                 {
-//                    методи сюды
+                    fuelCostPerWeek();
                 }; break;
 
                 case 5:
                 {
-//                    методи тыры пыры
+                    autoNumberWithHighestFuel();
                 }; break;
 
             }
