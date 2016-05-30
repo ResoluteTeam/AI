@@ -76,13 +76,13 @@ void fuelCostAllAutosOnEveryDay() {
 }
 
 float getFuelPrice(std::string _fuelType) {
-    if (_fuelType == "A80") {
+    if (_fuelType == "A80" || _fuelType == "А80") {
         return 17.49;
-    } if (_fuelType == "A92") {
+    } if (_fuelType == "A92" || _fuelType == "А92") {
         return 20.47;
-    } if (_fuelType == "A95") {
+    } if (_fuelType == "A95" || _fuelType == "А95") {
         return 21.22;
-    } if (_fuelType == "A98") {
+    } if (_fuelType == "A98" || _fuelType == "А98") {
         return 25.95;
     } else {
         return 1;
@@ -109,6 +109,7 @@ void autoNumberWithHighestFuel() {
             temp = fuelCost;
         }
     }
+
     std::cout << "Номер: " << carNumber << "    (" << temp << ")";
 }
 
