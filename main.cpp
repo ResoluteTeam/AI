@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <conio.h>
 #include "include/Auto.h"
 
 #define BackPressed GetAsyncKeyState(VK_BACK)
@@ -122,17 +123,31 @@ void fillTable()
         std::cin >> fuelAmt;
 
         std::cout << "\nДодати ще один автомобiль? (т/н)";
-        std::cin >> answer;
-
+        //std::cin >> answer;
+        getch();
         Auto *car = new Auto(number, fuelType, fuelAmt);
         cars.push_back(car);
 
-        std::cout << answer;
+        /*std::cout << answer;
         if(answer == 'н' || answer == 'y' || answer == 'н')
         {
             exit = true;
             saveToFile();
+        }*/
+
+        while (true) {
+            if (EscapePressed) {
+                EscapePickUp;
+                saveToFile();
+                exit = true;
+                break;
+            } if (EnterPressed) {
+                EnterPickUp;
+                exit = false;
+                break;
+            }
         }
+
     }
 }
 
@@ -207,8 +222,8 @@ void info() {
 int main()
 {
     setlocale(LC_CTYPE, "Russian");
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
+    //SetConsoleOutputCP(1251);
+    //SetConsoleCP(1251);
     fillTable();
 
     ShowMainMenu();
