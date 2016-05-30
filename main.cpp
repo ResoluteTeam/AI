@@ -199,7 +199,10 @@ void saveToFile() {
 int main()
 {
     setlocale(LC_CTYPE, "Russian");
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
     fillTable();
+
     ShowMainMenu();
 
     while(TRUE){
