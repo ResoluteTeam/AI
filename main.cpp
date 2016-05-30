@@ -67,7 +67,6 @@ void fillTable()
 {
     bool exit = false;
     char answer;
-    char fl;
     std::string number;
     int fuel;
     std::string fuelType;
@@ -118,7 +117,8 @@ void fillTable()
         Auto *car = new Auto(number, fuelType, fuelAmt);
         cars.push_back(car);
 
-        if(answer == 'í' || answer == 'y')
+        std::cout << answer;
+        if(answer == 'í' || answer == 'y' || answer == 'í')
         {
             exit = true;
         }
@@ -189,7 +189,7 @@ void saveToFile() {
 }
 int main()
 {
-    setlocale(LC_CTYPE, "ukr");
+    setlocale(LC_CTYPE, "Russian");
     fillTable();
     ShowMainMenu();
 

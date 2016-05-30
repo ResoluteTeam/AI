@@ -7,8 +7,6 @@
 	<iostream>
 	"include/Auto.h"
 
-1464560023 c:\projects\cb\auto\include\auto.h
-	<string>
 
 1464560023 source:c:\projects\cb\auto\src\auto.cpp
 	"Auto.h"
@@ -18,7 +16,7 @@
 
 1464561197 c:\projects\cb\auto\include\test.h
 
-1464567927 source:d:\cb\ai\main.cpp
+1464570364 source:d:\cb\ai\main.cpp
 	<stdio.h>
 	<windows.h>
 	<clocale>
