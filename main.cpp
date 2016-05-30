@@ -126,12 +126,6 @@ void fillTable()
 }
 
 void fuelCountPerWeek() {
-    //-----------------TEST
-    Auto *car = new Auto("SS", "A95", 4.0);
-    cars.push_back(car);
-    //-----------------TEST
-
-
     for (int i = 0; i < cars.size(); i++) {
         float fCount = 0;
         std::cout.flush();
