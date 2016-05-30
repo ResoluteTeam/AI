@@ -222,19 +222,12 @@ int main()
                 case 2:
                 {
                   fuelCountPerWeek();
-<<<<<<< HEAD
-
-=======
->>>>>>> 6bedbe96b531029a24f908e17f9a79f57e15bcb6
                 };break;
 
                 case 3:
                 {
-<<<<<<< HEAD
-//                    методи туды
-=======
+
                     fuelCostAllAutosOnEveryDay();
->>>>>>> 6bedbe96b531029a24f908e17f9a79f57e15bcb6
                 }; break;
 
                 case 4:
