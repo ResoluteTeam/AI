@@ -190,7 +190,9 @@ void autoNumberWithHighestFuel() {
     std::cout << "Номер: " << carNumber << "    (" << temp << ")";
 }
 
+void saveToFile() {
 
+}
 int main()
 {
     setlocale(LC_CTYPE, "ukr");
