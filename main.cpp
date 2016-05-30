@@ -25,7 +25,7 @@
 
 const int Color = system("color F1");
 
-unsigned int arrow = 0; // вибір номер меню на який ставеться позначка
+unsigned int arrow = 1; // вибір номер меню на який ставеться позначка
 unsigned int last_arrow = 5; //кількість категорій
 
 const char* arrow_icon = ""; //знак категорії
@@ -39,7 +39,7 @@ inline void ShowMainMenu()
 {
     system("CLS");
 
-    printf("%s Ввести данi\n",  arrow == 0 ? arrow_icon : free_space);
+    //printf("%s Ввести данi\n",  arrow == 0 ? arrow_icon : free_space);
     printf("%s Авто-iнфо\n",  arrow == 1 ? arrow_icon : free_space);
     printf("%s Витрачено за тиждень кожною машиною\n",  arrow == 2 ? arrow_icon : free_space);
     printf("%s Вартiсть витраченого всiма авто за кожен день\n",  arrow == 3 ? arrow_icon : free_space);
@@ -48,6 +48,81 @@ inline void ShowMainMenu()
 
     printf("\n\n");
     printf("%s Esc - Вихiд\n",free_space);
+}
+
+inline void ShowStorageMenu()
+{
+    system("CLS");
+
+    ShowMainMenu();
+
+    printf("%s Пошук\n",              arrow == 1 ? arrow_icon : free_space);
+    printf("%s Весь товар\n",         arrow == 2 ? arrow_icon : free_space);
+    printf("%s Фільтр\n",             arrow == 3 ? arrow_icon : free_space);
+    printf("\n\n");
+    printf("%s Назад - Back",free_space);
+}
+
+void fillTable()
+{
+    bool exit = false;
+    char answer;
+    char fl;
+    std::string number;
+    int fuel;
+    std::string fuelType;
+    float fuelAmt;
+
+    while(exit == false)
+    {
+        fuel = 0;
+        std::cout << "\nВведiть номер машини: ";
+        std::cin >> number;
+
+        std::cout << "\nВиберiть тип пального(1 - A80, 2 - A92, 3 - A95, 4 - A98): ";
+        std::cin >> fuel;
+
+
+
+        while(fuel != 1 && fuel != 2 && fuel != 3 && fuel != 4)
+        {
+            fflush(stdin);
+            std::cin.clear();
+            std::cout << "Ви ввели неправильний тип пального.\n";
+            std::cout << "\nВиберiть тип пального(1 - A80, 2 - A92, 3 - A95, 4 - A98): ";
+            std::cin >> fuel;
+        }
+
+        switch(fuel)
+        {
+            case 1:{
+                fuelType = "A80";
+            }; break;
+            case 2:{
+                fuelType = "A92";
+            }; break;
+            case 3:{
+                fuelType = "A95";
+            }; break;
+            case 4:{
+                fuelType = "A98";
+            }; break;
+        }
+
+        std::cout << "\nВведiть кiлькiсть пального, яке витрачається за один день:";
+        std::cin >> fuelAmt;
+
+        std::cout << "\nДодати ще один автомобiль? (т/н)";
+        std::cin >> answer;
+
+        Auto *car = new Auto(number, fuelType, fuelAmt);
+        cars.push_back(car);
+
+        if(answer == 'н' || answer == 'y')
+        {
+            exit = true;
+        }
+    }
 }
 
 void fuelCountPerWeek() {
@@ -59,20 +134,14 @@ void fuelCountPerWeek() {
 
     for (int i = 0; i < cars.size(); i++) {
         float fCount = 0;
-        fCount = cars.at(i)->getFuelCount() * 6;
+        fCount = cars.at(i)->getFuelCount() * 7;
 
-        std::cout << "Номер: " << cars.at(i)->getNumber() << "  Кiлькiсть палива, витраченого машиною за тиждень:" << fCount;
+        std::cout << "Номер: " << cars.at(i)->getNumber() << "Кiлькiсть палива, витраченого машиною за тиждень:" << fCount;
     }
-
 }
 
-void fuelCostAllAutosOnEveryDay() {
-    float fuelCost = 0;
-    for (int i = 0; i < cars.size(); i++) {
-        fuelCost += cars.at(i)->getFuelCount();
+float fuelCostAllAutosOnEveryDay() {
 
-        std::cout << i + 1 << " машин витрачають " << fuelCost << " лiтра(iв) за день";
-    }
 }
 
 float fuelCostPerWeek() {
@@ -86,6 +155,7 @@ std::string autoNumberWithHighestFuel() {
 int main()
 {
     setlocale(LC_CTYPE, "ukr");
+    fillTable();
     ShowMainMenu();
 
     while(TRUE){
@@ -103,8 +173,6 @@ int main()
             {
                 case 0:
                 {
-
-
                 }; break;
 
                 case 1:
@@ -116,16 +184,11 @@ int main()
                 {
                   fuelCountPerWeek();
 
-
                 };break;
 
                 case 3:
                 {
-<<<<<<< HEAD
-                    fuelCostAllAutosOnEveryDay();
-=======
 //                    методи туды
->>>>>>> origin/master
                 }; break;
 
                 case 4:
