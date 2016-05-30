@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1464569200 source:c:\projects\cb\auto\main.cpp
+1464571503 source:c:\projects\cb\auto\main.cpp
 	<stdio.h>
 	<windows.h>
 	<clocale>
 	<vector>
 	<iostream>
+	<fstream>
 	"include/Auto.h"
 
 1464560023 source:c:\projects\cb\auto\src\auto.cpp
@@ -28,4 +29,7 @@
 
 1464560502 source:d:\cb\ai\src\auto.cpp
 	"Auto.h"
+
+1464560023 c:\projects\cb\auto\include\auto.h
+	<string>
 

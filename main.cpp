@@ -3,6 +3,8 @@
 #include <clocale>
 #include <vector>
 #include <iostream>
+#include <fstream>
+#include <conio.h>
 #include "include/Auto.h"
 
 #define BackPressed GetAsyncKeyState(VK_BACK)
@@ -63,6 +65,15 @@ inline void ShowStorageMenu()
     printf("%s Назад - Back",free_space);
 }
 
+void saveToFile() {
+    std::ofstream fout("AutoInfo.txt", std::ios::trunc);
+
+    for (int i = 0; i < cars.size(); i++) {
+         fout << "№" << cars.at(i)->getNumber() << " Тип палива: " << cars.at(i)->getFuelType() << " Витрати палива(день): " << cars.at(i)->getFuelCount() << "\n";
+    }
+    fout.close();
+}
+
 void fillTable()
 {
     bool exit = false;
@@ -112,16 +123,31 @@ void fillTable()
         std::cin >> fuelAmt;
 
         std::cout << "\nДодати ще один автомобiль? (т/н)";
-        std::cin >> answer;
-
+        //std::cin >> answer;
+        getch();
         Auto *car = new Auto(number, fuelType, fuelAmt);
         cars.push_back(car);
 
-        std::cout << answer;
+        /*std::cout << answer;
         if(answer == 'н' || answer == 'y' || answer == 'н')
         {
             exit = true;
+            saveToFile();
+        }*/
+
+        while (true) {
+            if (EscapePressed) {
+                EscapePickUp;
+                saveToFile();
+                exit = true;
+                break;
+            } if (EnterPressed) {
+                EnterPickUp;
+                exit = false;
+                break;
+            }
         }
+
     }
 }
 
@@ -193,13 +219,14 @@ void info() {
     }
 }
 
-void saveToFile() {
-
-}
 int main()
 {
     setlocale(LC_CTYPE, "Russian");
+<<<<<<< HEAD
     SetConsoleOutputCP(1251);
+=======
+    //SetConsoleOutputCP(1251);
+>>>>>>> a61a23a1d92c665eab05e32e2bc55488f6012c60
     //SetConsoleCP(1251);
     fillTable();
 
