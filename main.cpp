@@ -40,8 +40,6 @@ std::vector<Auto*> cars;
 inline void ShowMainMenu()
 {
     system("CLS");
-
-    //printf("%s ¬вести данi\n",  arrow == 0 ? arrow_icon : free_space);
     printf("%s јвто-iнфо\n",  arrow == 1 ? arrow_icon : free_space);
     printf("%s ¬итрачено за тиждень кожною машиною\n",  arrow == 2 ? arrow_icon : free_space);
     printf("%s ¬артiсть витраченого всiма авто за кожен день\n",  arrow == 3 ? arrow_icon : free_space);
@@ -233,10 +231,6 @@ int main()
 
             switch(arrow)
             {
-                case 0:
-                {
-                }; break;
-
                 case 1:
                 {
                     info();
