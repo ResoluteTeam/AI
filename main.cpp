@@ -142,7 +142,7 @@ void fuelCostAllAutosOnEveryDay() {
     for (int i = 0; i < cars.size(); i++) {
         fuelCost += cars.at(i)->getFuelCount();
     }
-    std::cout << "\n" << cars.size() + 1 << " машин(а/и) витрачають " << fuelCost << " лiтра(iв) палива кожного дня";
+    std::cout << "\n" << cars.size() << " машин(а/и) витрачають " << fuelCost << " лiтра(iв) палива кожного дня";
 }
 
 float getFuelPrice(std::string _fuelType) {
@@ -163,7 +163,7 @@ void fuelCostPerWeek() {
     float fuelCost = 0;
     std::cout.flush();
     for (int i = 0; i < cars.size(); i++) {
-        fuelCost += getFuelPrice(cars.at(i)->getFuelType()) * 6;
+        fuelCost += cars.at(i)->getFuelCount() * getFuelPrice(cars.at(i)->getFuelType()) * 6;
     }
 
     std::cout << "Вартiсть палива за тиждень: " << fuelCost;
@@ -172,16 +172,25 @@ void fuelCostPerWeek() {
 void autoNumberWithHighestFuel() {
     float fuelCost = 0;
     float temp  = 0;
+    float carFuel = 0;
     std::string carNumber;
     for (int i = 0; i < cars.size(); i++) {
         fuelCost = getFuelPrice(cars.at(i)->getFuelType()) * cars.at(i)->getFuelCount();
         if (fuelCost > temp) {
             carNumber = cars.at(i)->getNumber();
+            carFuel = cars.at(i)->getFuelCount();
             temp = fuelCost;
         }
     }
     std::cout.flush();
-    std::cout << "Номер: " << carNumber << "    (" << temp << ")";
+    std::cout << "Номер: " << carNumber << "    (" << carFuel << ")";
+}
+
+void info() {
+    std::cout.flush();
+    for (int i = 0; i < cars.size(); i++) {
+        std::cout << "\n№" << cars.at(i)->getNumber() << " Тип палива: " << cars.at(i)->getFuelType() << " Витрати палива(день): " << cars.at(i)->getFuelCount();
+    }
 }
 
 void saveToFile() {
@@ -212,7 +221,7 @@ int main()
 
                 case 1:
                 {
-
+                    info();
                 }; break;
 
                 case 2:
